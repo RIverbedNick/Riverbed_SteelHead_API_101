@@ -10,7 +10,7 @@ import time
 
 
 #Your SteelHead mgmt IP address
-device_ip = '192.168.111.109'
+device_ip = '192.168.111.119'
 
 #initial post url to get Bearer token
 url = "https://"+device_ip+"/api/common/1.0/oauth/token?Content-type=application/x-www-form-urlencoded&Accept=application/json"
@@ -18,10 +18,10 @@ url = "https://"+device_ip+"/api/common/1.0/oauth/token?Content-type=application
 #You'll need to create an access code from the steelhead, Administration -> Security -> REST API Access
 #https://{steelhead_ip_addr}/mgmt/gui?p=setupRESTInterface
 #this access code is reqired to get a Bearer Token
-access_code = "eyJhbGciOiJub25lIn0K.eyJhdWQiOiAiaHR0cHM6Ly8xNDItTEFCL2FwaS9jb21tb24vMS4wL3Rva2VuIiwgImlzcyI6ICJodHRwczovLzE0Mi1MQUIiLCAicHJuIjogImFkbWluIiwgImp0aSI6ICI3Y2ZiZjg0MS0wYWNjLTQ5M2MtYWIxOS00NTJlZmM5NDVjOGUiLCAiZXhwIjogIjAiLCAiaWF0IjogIjE1ODg2MTY2MTUifQ=="
+access_code = "eyJhdWQiOiAiaHR0cHM6Ly8xNDItTEFCL2FwaS9jb21tb24vMS4wL3Rva2VuIiwgImlzcyI6ICJodHRwczovLzE0Mi1MQUIiLCAicHJuIjogImFkbWluIiwgImp0aSI6ICIxMTE4ZDdlNi03Mjg5LTRmNmQtODNkYS0yZjI3ZTUwYzkzZTciLCAiZXhwIjogIjAiLCAiaWF0IjogIjE1OTMxMDY3MDMifQ=="
 
 #with access code create API request payload
-payload = 'grant_type=access_code&assertion='+access_code+'.&state=state_string'
+payload = 'grant_type=access_code&assertion=eyJhbGciOiJub25lIn0K.'+access_code+'.&state=state_string'
 
 #Post request... Verify false, is due to not trusting the self signed cert of the SteelHead
 response = requests.request("POST", url, data = payload,verify=False)
